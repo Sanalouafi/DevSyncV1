@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,10 +20,15 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("user") == null) {
+            response.sendRedirect("authentication/login.jsp");
+            return;
+        }
+
         List<User> users = userService.getAllUsers();
-        System.out.println("Number of users fetched: " + users.size());
         request.setAttribute("users", users);
-        request.getRequestDispatcher("user-list.jsp").forward(request, response);
+        request.getRequestDispatcher("manager/users/user-list.jsp").forward(request, response);
     }
 
     @Override

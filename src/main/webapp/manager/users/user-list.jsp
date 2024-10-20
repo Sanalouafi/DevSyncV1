@@ -118,7 +118,7 @@
 <div id="addUserModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="users" method="post">
+            <form action="" method="post">
                 <div class="modal-header">
                     <h4 class="modal-title">Add User</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -167,7 +167,7 @@
 <div id="editUserModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="users" method="post">
+            <form action="" method="post">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit User</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -217,7 +217,7 @@
 <div id="deleteUserModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="users" method="post">
+            <form action="" method="post">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete User</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

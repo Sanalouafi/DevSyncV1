@@ -2,10 +2,7 @@ package com.example.dao.Impl;
 
 import com.example.dao.UserDao;
 import com.example.entities.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -67,6 +64,19 @@ public class UserDaoImpl implements UserDao {
             if (em != null) {
                 em.close();
             }
+        }
+    }
+    @Override
+    public User findByUsername(String username) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        try {
+            TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
+            query.setParameter("username", username);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
         }
     }
 }
